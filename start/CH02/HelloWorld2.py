@@ -7,6 +7,9 @@
 # Then walk through as an example of "debugging"
 
 #ask user for name
-usersname = input("What is your name")
+print("What is your name? ")
+usersname = input()
 #say hello to the user
-print("hello mf "+usersname)
+print("Goodmorning " + usersname + " What are you doing today?")
+dayGoing = input()
+print("DANM, go do something productive istead of ", dayGoing)
