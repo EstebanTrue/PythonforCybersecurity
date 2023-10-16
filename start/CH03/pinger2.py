@@ -6,8 +6,9 @@
 import os
 #build the ping command 
 target = "192.168.0." 
-
 #run ping command
+
+
 for x in range(255):
     count = 1 + x
     fullA = target + str(count)
@@ -20,4 +21,4 @@ for x in range(255):
         print("*****{0} User is Active****" .format(fullA))
 
     if exit_code != 0:
-        print("{0} User is not online" .format(fullA))
+        print("{0} User is not online" .format(fullA)) 
