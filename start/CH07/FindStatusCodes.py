@@ -23,7 +23,7 @@ while True:
         if code in statusDict.keys():
             statusDict[code] += 1
         else:
-            statusDict[code] += 1
+            statusDict[code] = 1
    
 logFile.close()
 for w in sorted(statusDict, key = statusDict.get, reverse = False):

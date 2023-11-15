@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-
+#by Estebn 
 
 import os
 import crypt
@@ -21,10 +21,10 @@ for line in lines:
     users.append(username)
 
 # Load password dictionary 
-passwords = open(dir_path+"/top1000.txt", "r").read().splitlines() 
+passwords = open(dir_path+"/top1000.txt", "r").readlines()
 
 # Crack passwords
-
+ 
 
 for i, hash_salt in enumerate(hashes):  
     username = users[i]  
