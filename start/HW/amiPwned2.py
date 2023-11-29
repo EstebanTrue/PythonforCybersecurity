@@ -38,19 +38,25 @@ def shaOneHash(hashPassword):
     hashObject = hashlib.sha1(hashPassword.encode())
     return hashObject.hexdigest()
 
-#input
-userPassword = input("what is the password your checking? ")  
-#call function from api
-#its a number because the comma cunction doesnt work without it
-result = int(amiPwned(shaOneHash(userPassword)))
-#adding commas
-res = '{:,}'.format(result)
-#print results
-print(f"The Password - {userPassword}  -, found {res} times.")
+potList = ["qwerty", "Password01", "1234567890", "iohegaubvba"]
+for potPass in potList:
 
-if result == 0:
-    print("AMAZING PASSWORD")
-elif result < 10:
-    print("you could do better")
-else:
-    print("horrid password")
+    #input
+    #userPassword = input("what is the password your checking? ")  
+    #call function from api
+    #its a number because the comma cunction doesnt work without it
+    #result = int(amiPwned(shaOneHash(userPassword)))
+    result = int(amiPwned(shaOneHash(potPass)))
+    #adding commas
+    res = '{:,}'.format(result)
+    #print results
+    #print(f"The Password - {userPassword}  -, found {res} times.")
+    print(f"The Password - {potPass}  -, found {res} times.")
+
+
+    if result == 0:
+        print("AMAZING PASSWORD")
+    elif result < 10:
+        print("you could do better")
+    else:
+        print("horrid password")
