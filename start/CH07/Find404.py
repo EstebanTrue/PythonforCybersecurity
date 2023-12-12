@@ -10,8 +10,6 @@ dir_path = os.path.dirname(os_path)
 logFile = open(dir_path + "/access.log", "r")
 
 ipDict = {}
-
-
 statusDict = {}
 while True:
     line = logFile.readline()

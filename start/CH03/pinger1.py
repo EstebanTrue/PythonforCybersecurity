@@ -13,4 +13,5 @@ for x in range(255):
     fullA = target + str(count)
     ping_cmd = "ping -c 1 -w 1 " + fullA
     os.system(ping_cmd)
+    print(x)
 #print results
