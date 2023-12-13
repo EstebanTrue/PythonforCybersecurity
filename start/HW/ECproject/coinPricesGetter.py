@@ -9,6 +9,11 @@ dir_path = os.path.dirname(os_path)
 salt = "G.DTW7g9s5U7KYf5"
 #starting from the begining
 #pinging api
+def whatCoin(urlW):
+    coinW = input("What coin do you want information on? ")
+    selectiveUrl = urlW,"/",coinW
+    return selectiveUrl
+
 def pinga(pingerUrl):
     #The try statement is easier then using the conditionals 
     #To ping the api its works to make a get request rather the ping command
@@ -57,7 +62,7 @@ def timeChecker(timUrl):
             #comparing the ping to a active status
             if pinga(timUrl) == f"***API at {timUrl} is online.***":
                 # will print data howeverlong the sleep is 
-                print(coinDataCol(url))
+                print(coinDataCol(timUrl))
         # This will show us any errors if they occur
         except Exception as e:
             print(f"An error occurred: {e}")
@@ -73,6 +78,7 @@ def authentic(filePath, saltA, userA, authUrl, timeOut=0):
                 key = list(user_data.keys())[0]
                 # gets password from the key
                 val = user_data[key]
+                # Allows up to 5 tries until the user is kicked from the program
                 for retry in range(5):
                     if userA == key:
                         # asks for password again
@@ -84,7 +90,7 @@ def authentic(filePath, saltA, userA, authUrl, timeOut=0):
                             #if password is correct runs the program
                             timeChecker(authUrl)
                         else:
-                            print("Wrong Password. Try again silly: ")
+                            print("Wrong Password. Try again silly... Think and retry when it asks!")
                             time.sleep(timeOut)
                             timeOut += 5
 
@@ -100,8 +106,9 @@ def authentic(filePath, saltA, userA, authUrl, timeOut=0):
                 # You can log the issue or take other actions as needed
 
     print("Authentication failed. User or password not found.")
-                        
-url = "https://api.coincap.io/v2/assets/bitcoin"
+
+
+url = "https://api.coincap.io/v2/assets"
 #timer = int(input("How long do you want to wait for your data to be returned: "))
 
 #put the function into a readable variable
@@ -111,16 +118,16 @@ userCred_Fpath = os.path.join(dir_path, 'users.txt')
 #puts the credentials into a file named users.txt
 with open(userCred_Fpath, 'w') as convert_file: 
      convert_file.write(json.dumps(user_credentials))
-
+# getting the username from the Dictionary 
 if user_credentials:
     username = list(user_credentials.keys())[0]
     theUser = username
-
-authentic(userCred_Fpath, salt, theUser,url)
+please_work = whatCoin(url)
+authentic(userCred_Fpath, salt, theUser, please_work)
 
 
 
 # results - 
-# {"data":{"id":"bitcoin","rank":"1","symbol":"BTC","name":"Bitcoin","supply":"19563700.0000000000000000","maxSupply":"21000000.0000000000000000",
-# "marketCapUsd":"849889053338.5837237911056500","volumeUsd24Hr":"7288795573.5881609602264709","priceUsd":"43442.1430168415853745",
+# {"data":{"id":"bitcoin","rank":"1",***"symbol":"BTC",***"name":"Bitcoin","supply":"19563700.0000000000000000","maxSupply":"21000000.0000000000000000",
+# "marketCapUsd":"849889053338.5837237911056500","volumeUsd24Hr":"7288795573.5881609602264709",***"priceUsd":"43442.1430168415853745",
 # "changePercent24Hr":"-1.1319457196120539","vwap24Hr":"43444.3009109860750579","explorer":"https://blockchain.info/"},"timestamp":1702000460232}
